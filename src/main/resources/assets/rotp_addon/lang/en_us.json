@@ -1,0 +1,12 @@
+{
+  "non_stand.rotp_addon.tutorial": "Tutorial",
+  "action.rotp_addon.invisible": "Invisible",
+  "action.rotp_addon.barrage": "Barrage",
+  "action.rotp_addon.night_vision": "Night Vision",
+  "action.rotp_addon.sendo_overdrive": "Sendo Overdrive",
+  "action.rotp_addon.teleport": "Teleport",
+  "action.rotp_addon.wall_climb": "Wall Climb",
+  "action.rotp_addon.explode_entity": "Explode Entity",
+  "action.rotp_addon.explode_block": "Explode Block",
+  "jojo.message.action_condition.no_energy_tutorial": "You do not have enough energy to perform this action."
+}

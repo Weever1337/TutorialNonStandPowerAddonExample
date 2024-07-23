@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "com/yourname/rotp_addon/mixin/ActionOverlayGuiMixin": {
+      "getPowerUiColor": "com/github/standobyte/jojo/client/ui/actionshud/ActionOverlayGui;getPowerUiColor(com/github/standobyte/jojo/power/IPower<?, ?> power)V"
+    }
+  },
+  "data": {
+    "searge": {
+      "com/yourname/rotp_addon/mixin/ActionOverlayGuiMixin": {
+        "getPowerUiColor": "com/github/standobyte/jojo/client/ui/actionshud/ActionOverlayGui;getPowerUiColor(com/github/standobyte/jojo/power/IPower<?, ?> power)V"
+      }
+    }
+  }
+}
