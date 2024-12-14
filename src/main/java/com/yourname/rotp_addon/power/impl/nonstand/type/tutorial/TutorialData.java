@@ -14,11 +14,14 @@ public class TutorialData extends TypeSpecificData {
     }
 
     @Override
-    public void readNBT(CompoundNBT nbt) {}
+    public void readNBT(CompoundNBT nbt) {
+    }
 
     @Override
-    public void syncWithUserOnly(ServerPlayerEntity user) {}
+    public void syncWithUserOnly(ServerPlayerEntity user) {
+    }
 
     @Override
-    public void syncWithTrackingOrUser(LivingEntity user, ServerPlayerEntity entity) {}
+    public void syncWithTrackingOrUser(LivingEntity user, ServerPlayerEntity entity) {
+    }
 }

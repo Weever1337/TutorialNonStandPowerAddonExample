@@ -21,9 +21,8 @@ public class TutorialTeleport extends TutorialAction {
             RayTraceResult rayTrace = JojoModUtil.rayTrace(user.getEyePosition(1.0F), user.getLookAngle(), 12,
                     world, user, e -> !e.is(user), 0, 0);
             user.teleportTo(rayTrace.getLocation().x, rayTrace.getLocation().y, rayTrace.getLocation().z);
-        }
-        if (world.isClientSide()){
-            user.playSound(SoundEvents.ENDERMAN_TELEPORT, 2.0F, 1.0F); // Thank you, TiltoZavrium.
+        } else {
+            user.playSound(SoundEvents.ENDERMAN_TELEPORT, 2.0F, 1.0F);
             GeneralUtil.doFractionTimes(() -> {
                 world.addAlwaysVisibleParticle(
                         ModParticles.HAMON_SPARK_SILVER.get(), true,

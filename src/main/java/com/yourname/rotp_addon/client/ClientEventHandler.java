@@ -3,33 +3,23 @@ package com.yourname.rotp_addon.client;
 import com.github.standobyte.jojo.client.ui.actionshud.ActionsOverlayGui;
 import com.github.standobyte.jojo.init.ModStatusEffects;
 import com.github.standobyte.jojo.power.impl.nonstand.INonStandPower;
-import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.util.mc.MCUtil;
 import com.github.standobyte.jojo.util.mc.reflection.ClientReflection;
 import com.google.common.base.MoreObjects;
 import com.mojang.blaze3d.matrix.MatrixStack;
-
 import com.yourname.rotp_addon.init.InitPowers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.renderer.FirstPersonRenderer;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.Timer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.event.RenderArmEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
-import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -38,7 +28,9 @@ public class ClientEventHandler {
 
     private final Minecraft mc;
 
-    private Timer clientTimer;
+    private final Timer clientTimer;
+    private boolean modPostedEvent = false;
+
     private ClientEventHandler(Minecraft mc) {
         this.mc = mc;
         this.clientTimer = ClientReflection.getTimer(mc);
@@ -51,7 +43,6 @@ public class ClientEventHandler {
         }
     }
 
-    private boolean modPostedEvent = false;
     @SuppressWarnings("resource")
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onRenderHand(RenderHandEvent event) {
@@ -92,7 +83,7 @@ public class ClientEventHandler {
             ClientReflection.renderPlayerArm(matrixStack, buffer, light, equipProgress,
                     swingProgress, handSide, renderer);
             matrixStack.popPose();
-            // Nuh, i win
+            // Nuh, i won
         }
         modPostedEvent = false;
     }

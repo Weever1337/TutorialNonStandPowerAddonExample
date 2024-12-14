@@ -2,15 +2,9 @@ package com.yourname.rotp_addon.action.non_stand;
 
 import com.github.standobyte.jojo.action.ActionConditionResult;
 import com.github.standobyte.jojo.action.ActionTarget;
-import com.github.standobyte.jojo.entity.HamonSendoOverdriveEntity;
-import com.github.standobyte.jojo.init.ModParticles;
-import com.github.standobyte.jojo.init.power.non_stand.ModPowers;
 import com.github.standobyte.jojo.power.impl.nonstand.INonStandPower;
 import com.github.standobyte.jojo.util.mc.MCUtil;
-import com.github.standobyte.jojo.util.mc.damage.DamageUtil;
 import com.github.standobyte.jojo.util.mod.JojoModUtil;
-
-import com.yourname.rotp_addon.power.impl.nonstand.type.tutorial.TutorialUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.entity.Entity;
@@ -21,7 +15,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
@@ -56,15 +49,13 @@ public class TutorialBarrage extends TutorialAction {
                                 if (player.abilities.instabuild) {
                                     digDuration = 0;
                                     dropItem = false;
-                                }
-                                else if (!ForgeHooks.canHarvestBlock(blockState, player, world, pos)) {
+                                } else if (!ForgeHooks.canHarvestBlock(blockState, player, world, pos)) {
                                     digDuration *= 10F / 3F;
                                 }
                             }
                             if (digDuration >= 0 && digDuration <= 2.5F * Math.sqrt(user.getAttributeValue(Attributes.ATTACK_DAMAGE))) {
                                 world.destroyBlock(pos, dropItem);
-                            }
-                            else {
+                            } else {
                                 SoundType soundType = blockState.getSoundType(world, pos, user);
                                 world.playSound(null, pos, soundType.getHitSound(), SoundCategory.BLOCKS, (soundType.getVolume() + 1.0F) / 8.0F, soundType.getPitch() * 0.5F);
                             }
@@ -77,20 +68,15 @@ public class TutorialBarrage extends TutorialAction {
                         int invulTicks = targetEntity.invulnerableTime;
                         ((PlayerEntity) user).attack(targetEntity);
                         targetEntity.invulnerableTime = invulTicks;
-                    }
-                    if (!world.isClientSide()) {
-                        targetEntity.hurt(DamageSource.playerAttack((PlayerEntity) user), 1);
+                        if (!world.isClientSide()) {
+                            targetEntity.hurt(DamageSource.playerAttack((PlayerEntity) user), 1);
+                        }
                     }
                     break;
                 default:
                     break;
             }
         }
-    }
-
-    @Override
-    public boolean isHeldSentToTracking() {
-        return true;
     }
 
     @Override

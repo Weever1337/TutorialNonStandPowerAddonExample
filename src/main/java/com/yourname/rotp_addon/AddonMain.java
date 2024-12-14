@@ -1,7 +1,6 @@
 package com.yourname.rotp_addon;
 
 import com.yourname.rotp_addon.init.InitPowers;
-import com.yourname.rotp_addon.power.impl.nonstand.type.tutorial.TutorialCustomRegistries;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -16,7 +15,7 @@ public class AddonMain {
     public AddonMain() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         InitPowers.ACTIONS.register(modEventBus);
-        TutorialCustomRegistries.initCustomRegistries(modEventBus);
+        InitPowers.NON_STAND_POWERS.register(modEventBus);
 //        InitEntities.ENTITIES.register(modEventBus);
     }
 

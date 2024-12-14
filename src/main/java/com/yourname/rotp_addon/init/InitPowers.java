@@ -15,17 +15,9 @@ public class InitPowers {
     public static final DeferredRegister<Action<?>> ACTIONS = DeferredRegister.create(
             (Class<Action<?>>) ((Class<?>) Action.class), AddonMain.MOD_ID);
 
-    public static void loadRegistryObjects() {}
-
     public static final RegistryObject<TutorialAction> BARRAGE = ACTIONS.register("barrage",
             () -> new TutorialBarrage(
                     new TutorialAction.Builder().heldWalkSpeed(0.5F)
-            )
-    );
-
-    public static final RegistryObject<TutorialAction> SENDO_OVERDRIVE = ACTIONS.register("sendo_overdrive",
-            () -> new TutorialSendoOverdrive(
-                    new TutorialAction.Builder().cooldown(25).energyCost(200).needsFreeMainHand().swingHand()
             )
     );
 
@@ -41,8 +33,8 @@ public class InitPowers {
             )
     );
 
-    public static final RegistryObject<TutorialAction> WALL_CLIMB = ACTIONS.register("wall_climb",
-            () -> new TutorialWallClimb(new TutorialAction.Builder())
+    public static final RegistryObject<TutorialAction> REGENERATION = ACTIONS.register("regeneration",
+            () -> new TutorialRegeneration(new TutorialAction.Builder().holdEnergyCost(10))
     );
 
     public static final RegistryObject<TutorialAction> TELEPORT = ACTIONS.register("teleport",
@@ -50,16 +42,15 @@ public class InitPowers {
     );
 
     public static final RegistryObject<TutorialPowerType> TUTORIAL = NON_STAND_POWERS.register("tutorial",
-            ()-> new TutorialPowerType(
-                    new TutorialAction[] { // attacks
+            () -> new TutorialPowerType(
+                    new TutorialAction[]{ // attacks
                             BARRAGE.get(),
-                            SENDO_OVERDRIVE.get(),
                     },
-                    new TutorialAction[] { // abilities
+                    new TutorialAction[]{ // abilities
                             INVISIBLE.get(),
-                            WALL_CLIMB.get(),
+                            REGENERATION.get(),
                             TELEPORT.get()
                     },
-                    TELEPORT.get() // default MMB
-            ));
+                    REGENERATION.get() // default MMB
+            ).withColor(0xb9faca));
 }
